@@ -1,0 +1,30 @@
+
+<div class='itemHeading'>
+    <a class="dropdown-toggle" data-toggle="dropdown">
+     <h3> Active Item Groups</h3>
+    </a>
+  </div>
+
+<mat-accordion displayMode="flat" multi class="mat-table">
+    <section matSort class="mat-elevation-z2 mat-header-row">
+        <mat-checkbox>
+        </mat-checkbox>
+      <span class="mat-header-cell" mat-sort-header="Name">NAME</span>
+      <span class="mat-header-cell" mat-sort-header="SKU">SKU</span>
+      <span class="mat-header-cell" mat-sort-header="StockOnHand">STOCK ON HAND</span>
+      <span class="mat-header-cell" mat-sort-header="ReorderLevel">REORDER LEVEL</span>
+    </section>
+
+    <mat-expansion-panel class="mat-elevation-z1" *ngFor="let item of displayedRows$ | async">
+      <mat-expansion-panel-header class="mat-row">
+          <mat-checkbox>
+            </mat-checkbox>
+        <span class="mat-cell">{{item.Name}}</span>
+        <span class="mat-cell">{{item.SKU}}</span>
+        <span class="mat-cell">{{item.StockOnHand}}</span>
+        <span class="mat-cell">{{item.ReorderLevel}}</span>
+      </mat-expansion-panel-header>
+      <div><pre>test test tset test tse</pre></div>
+    </mat-expansion-panel>
+
+  </mat-accordion>

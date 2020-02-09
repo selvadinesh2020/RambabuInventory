@@ -1,0 +1,553 @@
+
+
+<h3>contacts add page</h3>
+<form [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+  
+  <!-- primary contact -->
+<table class="example-full-width" cellspacing="0" formGroupName="primaryContact">
+    <tr>
+      <td>Primary Contact:</td>
+    <td>
+        <mat-form-field>
+            <mat-select placeholder="Salutation" formControlName="salutionName" >
+              <mat-option *ngFor="let salution of salutations" [value]="salution.value" >
+                {{salution.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error>{{getErrorMessage('salutation')}}</mat-error>
+          </mat-form-field>
+    </td>  
+    <td>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First name" formControlName="firstName">
+        <mat-error>{{getErrorMessage('FirstName')}}</mat-error>
+
+      </mat-form-field>
+    </td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Last Name" formControlName="lastName">
+      <mat-error>{{getErrorMessage('LastName')}}</mat-error>
+
+    </mat-form-field></td>
+  </tr>
+</table>
+
+  <!-- company name -->
+  <table class="example-full-width" cellspacing="0" >
+    <tr>
+      <td>Company Name:</td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Company Name" formControlName="companyName" [(ngModel)]="contanctModel.companyName">
+      <mat-error>{{getErrorMessage('companyName')}}</mat-error>
+
+    </mat-form-field></td>
+  </tr>
+</table>
+
+  <!-- Contact Display Name -->
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>Contact Display Name:</td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Contact Display Name" formControlName="displayName" [(ngModel)]="contanctModel.displayName">
+      <mat-error>{{getErrorMessage('DisplayName')}}</mat-error>
+
+    </mat-form-field></td>
+  </tr></table>
+
+  <!-- Contact Email -->
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>Contact Email:</td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Contact Email"  formControlName="contactEmail" [(ngModel)]="contanctModel.contactEmail">
+      <mat-error>{{getErrorMessage('ContactEmail')}}</mat-error>
+
+    </mat-form-field></td>
+  </tr></table>
+ 
+  
+  <!-- Contact Phone -->
+  <table class="example-full-width" cellspacing="0" formGroupName="phoneGroup" >
+    <tr>
+      <td>Contact Phone:</td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="work phone" formControlName="workPhone" [(ngModel)]="contanctModel.workPhone">
+      <mat-error>{{getErrorMessage('WorkPhone')}}</mat-error>
+
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="mobile" formControlName="mobile" [(ngModel)]="contanctModel.mobile">
+      <mat-error>{{getErrorMessage('mobile')}}</mat-error>
+
+    </mat-form-field></td>
+  </tr></table>
+
+   <!-- Website -->
+   <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>Website:</td>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="Website" formControlName="website" [(ngModel)]="contanctModel.website">
+        <mat-error>{{getErrorMessage('Website')}}</mat-error>
+
+      </mat-form-field></td>
+    </tr></table>
+
+  <!-- Contatct Type-->
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>Contatct Type:</td>
+    <td>
+        <mat-radio-group formControlName="contactType">
+            <mat-radio-button value="1">Customer</mat-radio-button>
+            <mat-radio-button value="2">Vendor</mat-radio-button>
+            <mat-error>{{getErrorMessage('contatcttype')}}</mat-error>
+
+          </mat-radio-group>
+          
+    </td>
+  </tr></table>
+
+<!-- br  remove bar -->
+<br/>
+
+
+  <mat-tab-group>
+      <mat-tab label="Tax & Payment Details" formGroupName="taxPayment"> Tax & Payment Details
+
+        <!-- GST Treatment  -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>GST Treatment:</td>
+            <td>
+                <mat-form-field>
+                    <mat-select placeholder="Select a GST Treatment" formControlName="GSTTreatment">
+                      <mat-option *ngFor="let salution of salutations" [value]="salution.value">
+                        {{salution.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>    
+                  
+            </td>
+          </tr></table>
+
+          <!-- GST Identification Number -->
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>GST Identification Number (GSTIN):</td>
+              <td>
+                  <mat-form-field>
+                      <mat-select placeholder="Select a GST Treatment" formControlName="GSTIdentificationNumber">
+                        <mat-option *ngFor="let salution of salutations" [value]="salution.value">
+                          {{salution.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>    
+                    
+              </td>
+            </tr></table>
+
+            <!-- place of supply -->
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>Place of Supply:</td>
+              <td>
+                  <mat-form-field>
+                      <mat-select placeholder="" formControlName="placeofSupply">
+                        <mat-option *ngFor="let salution of salutations" [value]="salution.value">
+                          {{salution.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>    
+                    
+              </td>
+            </tr></table>
+
+              <!-- Contatct Type-->
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                  <td>Tax Preferences:</td>
+                <td>
+                    <mat-radio-group formControlName="taxPreferences">
+                        <mat-radio-button value="1">Taxable</mat-radio-button>
+                        <mat-radio-button value="2">Tax Exempt</mat-radio-button>
+                      </mat-radio-group>
+                      
+                </td>
+              </tr></table>
+
+                          <!-- currency-->
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>Currency:</td>
+              <td>
+                  <mat-form-field>
+                      <mat-select placeholder="INR - Indian Rupee" formControlName="currency">
+                        <mat-option *ngFor="let currency of currencies" [value]="currency.value">
+                          {{currency.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>   
+                    
+              </td>
+            </tr></table>
+
+                                      <!-- payment term-->
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>Payment Terms:</td>
+              <td>
+                  <mat-form-field>
+                      <mat-select placeholder="Due On Receipt" formControlName="paymentTerms">
+                        <mat-option *ngFor="let payment of paymentTerms" [value]="payment.value">
+                          {{payment.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>    
+                    
+              </td>
+            </tr></table>
+
+                                      <!-- facebook-->
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>Facebook:</td>
+              <td>
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="facebook" formControlName="facebook">
+                      <!-- <mat-error>{{getErrorMessage('facebook')}}</mat-error> -->
+              
+                    </mat-form-field>   
+                    
+              </td>
+            </tr></table>
+
+                                                  <!-- Twitter-->
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>Twitter:</td>
+              <td>
+                  <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Twitter" formControlName="twitter">
+                      <!-- <mat-error>{{getErrorMessage('twitter')}}</mat-error> -->
+              
+                    </mat-form-field>   
+                    
+              </td>
+            </tr></table>
+
+      </mat-tab>
+      <mat-tab label="Address" formGroupName="address"> Address 
+
+        <table>
+          <tr>
+            <td>Billing Address</td>
+            <td>Shipping Address</td>
+          </tr>
+        </table>
+        <!-- Attention -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>Attention:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingAttention">
+            </mat-form-field></td>
+              <td>Attention:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingAttention">
+            </mat-form-field></td>
+          </tr>
+          
+          </table>
+           
+                  <!-- Address -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>Address:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingAddress">
+            </mat-form-field></td>
+              <td>Address:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingAddress">
+            </mat-form-field></td>
+          </tr>
+        </table>
+                            <!-- City -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>City:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingCity">
+            </mat-form-field></td>
+              <td>City:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingCity">
+            </mat-form-field></td>
+          </tr>
+        </table>
+                            <!-- State -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>State:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingState">
+            </mat-form-field></td>
+              <td>State:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingState">
+            </mat-form-field></td>
+          </tr>
+          
+          </table>
+
+                                      <!-- Zip Code -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>Zip Code:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingZipCode">
+            </mat-form-field></td>
+              <td>Zip Code:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingZipCode">
+            </mat-form-field></td>
+          </tr>
+          
+        </table>
+        
+        <!-- Country -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>Country:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingCountry">
+            </mat-form-field></td>
+              <td>Country:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingCountry">
+            </mat-form-field></td>
+          </tr>
+          
+        </table>
+
+                <!-- Fax -->
+       <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>Fax:</td>
+                    <td><mat-form-field class="example-full-width">
+                      <input matInput placeholder="First name" formControlName="billingFax">
+                    </mat-form-field></td>
+                      <td>Fax:</td>
+                    <td><mat-form-field class="example-full-width">
+                      <input matInput placeholder="First name" formControlName="shippingFax">
+                    </mat-form-field></td>
+              </tr>
+                  
+            </table>
+
+             <!-- Phone -->
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>Phone:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="billingPhone">
+            </mat-form-field></td>
+              <td>Phone:</td>
+            <td><mat-form-field class="example-full-width">
+              <input matInput placeholder="First name" formControlName="shippingPhone">
+            </mat-form-field></td>
+          </tr>
+          
+        </table>
+
+      </mat-tab>
+      <mat-tab label="Custom Fields"> Custom Fields 
+
+        <span>Start adding custom fields for your contacts by going to More Settings  Preferences  Contacts. 
+          You can add as many as Ten extra fields, as well as refine the address format of your contacts from there.</span>
+
+      </mat-tab>
+      <mat-tab label="Reporting tags"> Reporting tags 
+          <span>
+              There are no active reporting tags or you haven't created a reporting tag yet. 
+              You can create/edit reporting tags under settings in Zoho Books.
+          </span>
+      </mat-tab>
+      <mat-tab label="Notes"> Notes 
+            <span>
+              notes
+            </span>
+        </mat-tab>
+    </mat-tab-group>
+    
+    <div class="example-button-row">
+        
+        <button mat-raised-button color="primary" (click)="addContact()">save</button>
+        <button mat-raised-button>cancel</button>
+    </div>
+</form>
+
+<!-- <h1>Contact</h1>
+<div class="container">
+  <div class="row form-group"> 
+     <div class="col-xs-2">Primary Contact</div>
+     <div class="col-xs-1"><input type="text" class="form-control" placeholder="Salution"></div>
+     <div class="col-xs-2"><input type="text" class="form-control" placeholder="First Name"></div>
+     <div class="col-xs-2"><input type="text" class="form-control" placeholder="Last Name"></div>
+  </div>
+  <div class="row form-group"> 
+     <div class="col-xs-2">Company Name</div>
+     <div class="col-xs-4"><input type="text" class="form-control"></div>
+  </div>
+  <div class="row form-group"> 
+       <div class="col-xs-2">Contact Display Name</div>
+       <div class="col-xs-4"><input type="text" class="form-control"></div>
+  </div>
+ <div class="row form-group"> 
+       <div class="col-xs-2">Contact Email</div>
+       <div class="col-xs-4"><input type="text" class="form-control"></div>
+ </div>
+ <div class="row form-group"> 
+     <div class="col-xs-2">Contact Phone</div>
+     <div class="col-xs-2"><input type="text" class="form-control" placeholder="Work Phone"></div>
+     <div class="col-xs-2"><input type="text" class="form-control" placeholder="Mobile"></div>
+ </div>
+ <div class="row form-group"> 
+     <div class="col-xs-2">Website</div>
+     <div class="col-xs-4"><input type="text" class="form-control"></div>
+ </div>
+ <div class="row form-group"> 
+     <div class="col-xs-2">Contact Type</div>
+     <div class="col-xs-2"><label class="radio-inline">
+         <input type="radio" name="optradio" checked>Customer
+       </label>
+       <label class="radio-inline">
+         <input type="radio" name="optradio">Vendor
+       </label></div>
+ </div>
+ </div> 
+
+ <div class="container">
+ <ul class="nav nav-pills">
+  <li class="active"><a data-toggle="pill" data-target="#home">Tax & Payment Details</a></li>
+  <li><a data-toggle="pill" data-target="#menu1">Address</a></li>
+  <li><a data-toggle="pill" data-target="#menu2">Custom Fields</a></li>
+  <li><a data-toggle="pill" data-target="#menu3">Notes</a></li>
+</ul>
+
+<div class="tab-content">
+  
+  <div id="home" class="tab-pane fade in active">
+    <div class="row form-group"> 
+      <div class="col-xs-2">Currency</div>
+      <div class="col-xs-4"> 
+          <p-dropdown [options]="currency" [(ngModel)]="selectedCurrency" [style]="{'width':'150px'}" [filter]="true" filterBy="label,value.name">
+          </p-dropdown>
+      </div>
+    </div>
+    <div class="row form-group"> 
+        <div class="col-xs-2">Price List</div>
+        <div class="col-xs-4"><input type="text" class="form-control"></div>
+    </div>
+    <div class="row form-group"> 
+        <div class="col-xs-2">Payment Terms</div>
+        <div class="col-xs-4">
+          <select class="form-control" id="sel1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select></div>
+    </div>
+    <div class="row form-group"> 
+        <div class="col-xs-2">Tax Preferences</div>
+     <div class="col-xs-2">
+       <label class="radio-inline"><input type="radio" name="optradio" checked>Customer</label>
+       <label class="radio-inline"><input type="radio" name="optradio">Vendor</label>
+     </div>
+      </div>
+    <div class="row form-group"> 
+          <div class="col-xs-2">Tax Rate</div>
+          <div class="col-xs-4"><input type="text" class="form-control"></div>
+      </div>
+  </div>
+    
+  <div id="menu1" class="row form-grouptab-pane fade">
+      <div class="row form-group"> 
+      <div class="col-xs-6">
+        <h3>Billing Address</h3>
+          <div class="row form-group"> 
+        <div class="col-xs-4">Street</div>
+        <div class="col-xs-6"><input type="textarea" class="form-control"></div>
+          </div>
+          <div class="row form-group">
+        <div class="col-xs-4">City</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">State</div>
+      
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">Zip Code</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">Country</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">Fax</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+      </div>
+      
+      <div class="col-xs-6">
+          <h3>Shipping Address</h3>
+          <div class="row form-group"> 
+        <div class="col-xs-4">Street</div>
+        <div class="col-xs-6"><input type="textarea" class="form-control"></div>
+          </div>
+          <div class="row form-group">
+        <div class="col-xs-4">City</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">State</div>
+      
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">Zip Code</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">Country</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+        <div class="row form-group">
+        <div class="col-xs-4">Fax</div>
+        <div class="col-xs-6"><input type="text" class="form-control"></div>
+      </div>
+      </div>
+      </div>
+      
+  </div>
+  <div id="menu2" class="row form-group tab-pane fade">
+      <div class="row form-group"> 
+      <div class="col-xs-2">Date of Birth</div>
+      <div class="col-xs-4"><input type="text" class="form-control"></div>
+      </div>
+  </div>
+  <div id="menu3" class="row form-group tab-pane fade">
+      <div class="row form-group"> 
+      <div class="col-xs-2">Notes(For External Use Only)</div>
+      <div class="col-xs-4"><input type="textarea" class="form-control"></div>
+      </div>
+  </div>
+</div>
+
+</div> -->

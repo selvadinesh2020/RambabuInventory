@@ -1,0 +1,112 @@
+<h3>New Purchase Order</h3>
+
+<form [formGroup]="salesOrderForm" (ngSubmit)="salesOrderSubmit()"></form>
+
+<table>
+    <tr>
+        <td>Vendor Name*</td>
+        <td>
+            <mat-form-field>
+                <mat-select>
+                    <mat-option>vendor1</mat-option>
+                    <mat-option>vendor2</mat-option>
+                    <mat-option>vendor3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>Deliver To*</td>
+        <td>
+            <div>
+                <mat-radio-group>
+                    <mat-radio-button value="1">Organization</mat-radio-button>
+                    <mat-radio-button value="2">Customer</mat-radio-button>
+                </mat-radio-group>
+            
+            
+                    <!-- <p>selvadineshdeveloper</p><mat-icon>edit</mat-icon> -->
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>Purchase Order#*</td>
+        <td>
+                <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Purchase Order" value="">
+                </mat-form-field>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>Reference#</td>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Reference" value="">
+            </mat-form-field>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>Date</td>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Reference" value="">
+            </mat-form-field>
+        </td>
+        <td>Expected Delivery Date</td>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Reference" value="">
+            </mat-form-field>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <td>Shipment Preference</td>
+        <td>
+            <mat-form-field>
+                <mat-select placeholder="Select or Type to add">
+                    <mat-option>vendor1</mat-option>
+                    <mat-option>vendor2</mat-option>
+                    <mat-option>vendor3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+    </tr>
+</table>
+
+<table>
+    <th>ITEM DETAILS</th>
+    <th>ACCOUNT</th>
+    <th>QUANTITY</th>
+    <th>RATE</th>
+    <th>AMOUNT</th>
+    <tr>
+        <td>Type to search item or scan the barcode</td>
+    </tr>
+    <td>
+        <mat-form-field>
+            <mat-select placeholder="Select Account">
+                <mat-option>Account 1</mat-option>
+                <mat-option>Account 2</mat-option>
+                <mat-option>Account 3</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </td>
+    <td>1.00</td>
+    <td>0.00</td>
+    <td>0.00</td>
+</table>

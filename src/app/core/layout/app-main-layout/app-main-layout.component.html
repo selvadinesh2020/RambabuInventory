@@ -1,0 +1,19 @@
+
+
+<ng-container>
+ 
+    <app-header></app-header> 
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
+            <app-sidenav></app-sidenav>                
+      </mat-sidenav>
+      <mat-sidenav-content class="sidenav-content">
+                  <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <mat-toolbar class="example-footer" color="primary">Footer</mat-toolbar>
+  </ng-container>
+  
+  
+  
+  

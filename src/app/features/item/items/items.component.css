@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+.mat-cell > a{
+  text-decoration: none !important;
+}
+
+.itemHeading{
+  margin:25px;
+}
+
+
+.mat-header-cell{
+  background-color: #f7f7f7;
+}

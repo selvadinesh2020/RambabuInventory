@@ -1,0 +1,128 @@
+<div *ngIf="router.url.indexOf('/add')<0 && router.url.indexOf('/edit')<0">
+  <div class='itemHeading'>
+<div class='HeadingleftContent'>
+   <p> Active Item Groups</p>
+</div>
+<div class='HeadingRightContent'>
+     <p class='headingInline'> Add Item </p>
+     <p class='headingInline'> Menu </p>
+  </div>
+</div>
+
+<div class="maingrid item-column">
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z1">
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<!--  Column  -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Expand">
+      <th mat-header-cell *matHeaderCellDef>
+        <div>  <!--  -->  </div>
+      </th>
+      <td mat-cell *matCellDef="let element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+        <a href="javascript: void(0);" > <img class='folder' src='../../../../assets/folder.png'>
+        </a>
+      </td>
+    </ng-container>
+  <ng-container matColumnDef="NAME">
+    <th mat-header-cell *matHeaderCellDef> NAME </th>
+    <td mat-cell *matCellDef="let element">
+      <a href="javascript: void(0);">{{element.Name}} <span class="text-muted text-capitalize "> (1 Items) </span></a>  </td>
+  </ng-container>
+  <ng-container matColumnDef="SKU">
+    <th mat-header-cell *matHeaderCellDef> SKU </th>
+    <td mat-cell *matCellDef="let element">
+      <!-- {{element.SKU}}  -->
+
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="STOCK ON HAND">
+    <th mat-header-cell *matHeaderCellDef> STOCK ON HAND </th>
+    <td mat-cell *matCellDef="let element">
+      <!-- {{element.StockOnHand}}  -->
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="REORDER LEVEL">
+    <th mat-header-cell *matHeaderCellDef> REORDER LEVEL </th>
+    <td mat-cell *matCellDef="let element">
+      <!-- {{element.ReorderLevel}}  -->
+    </td>
+  </ng-container>
+
+   <!-- Expanded Content Column  -->
+
+  <ng-container matColumnDef="DetailExpand">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="2">
+          <div class="element-detail"
+          [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+
+        </div>
+    </ng-container>
+  <ng-container matColumnDef="DetailName">
+  <td mat-cell *matCellDef="let element" >
+  <div class="element-detail"
+        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+    <div class="element-description">
+      <div class="expandedDetail-element">
+          <a href="javascript: void(0);">{{element.Name}}</a>
+      </div>
+
+    </div>
+  </div>
+  </td>
+  </ng-container>
+  <ng-container matColumnDef="DetailSKU">
+    <td mat-cell *matCellDef="let element">
+      <div class="element-detail"
+      [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+    {{element.SKU}}
+  </div>
+  </td>
+  </ng-container>
+  <ng-container matColumnDef="DetailStockOnHand">
+  <td mat-cell *matCellDef="let element">
+    <div class="element-detail"
+      [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+      {{element.StockOnHand}}
+  </div>
+  </td>
+  </ng-container>
+  <ng-container matColumnDef="DetailReorderLevel">
+  <td mat-cell *matCellDef="let element">
+  <div class="element-detail"
+  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+  {{element.ReorderLevel}}
+  </div>
+  </td>
+  </ng-container>
+
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+      class="element-row"
+      [class.expanded-row]="expandedElement === element"
+
+      [routerLink]="['/item/itemGroups/detials']" [queryParams] ="{Id:element.Id}">
+  </tr>
+  <tr mat-row *matRowDef="let row;
+  columns: ['DetailExpand','DetailName','DetailSKU','DetailStockOnHand','DetailReorderLevel']"
+   class="detail-row"></tr>
+</table>
+</div>
+<!-- <div class="split right item-column" *ngIf="showSplitRight">
+    <app-itemgroups-detail></app-itemgroups-detail>
+      </div> -->
+</div>
+<router-outlet></router-outlet>

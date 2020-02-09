@@ -1,0 +1,52 @@
+table {
+  width: 100%;
+}
+.HeadingleftContent{
+  float:left;
+  }
+  .HeadingRightContent{
+  float:right;
+  }
+.itemHeading{
+  margin:25px;
+}
+.itemHeading p{
+  display: block;
+  font-weight: 400;
+  font-size: 20px;
+}
+.headingInline{
+  display: inline !important;
+}
+.centered {
+  position: absolute;
+    top: 60px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+tr.mat-header-row {
+  height: 56px;
+}
+.mat-header-cell{
+  background-color: #f7f7f7;
+}
+.content{
+  padding-top:100px;
+}
+.right {
+  right: 0;
+  background-color: white;
+
+}
+
+:host
+{    right: 0;
+  float: right;
+  top: -240px;
+  position: relative;
+  /* z-index: 1; */
+  background-color: white;
+  height: 100%;
+  width: 50%;}

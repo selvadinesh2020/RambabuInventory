@@ -1,0 +1,44 @@
+.example-container {
+ position: fixed;
+ height: 100%;
+ min-width: 50px;
+ background-color: #2d373c;
+
+}
+
+.example-sidenav-content button {
+  background-color: #222b2f;
+  width:220px;
+}
+.example-sidenav-content {
+
+  width:220px;
+}
+
+.example-sidenav {
+  padding: 20px;
+  width:220px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #2d373c;
+}
+
+ul li a {
+  color:#D9D9D9;
+}
+
+
+.drawerUl{
+    padding-top: 12px;
+    width: 220px;
+    top: 0;
+    bottom: 50px;
+    padding-left: 0px;
+    overflow-y: auto;
+}
+
+.drawerUl li{
+  list-style: none;
+  padding: 4px;
+  padding-left: 0px;
+  margin: 0;
+}

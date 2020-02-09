@@ -1,0 +1,51 @@
+
+
+<mat-list>
+    <mat-list-item routerLink='/contact'> Contacts  </mat-list-item>
+    <a routerLink='/contact/add' routerLinkActive="active">add</a>
+    <!-- <mat-list-item>  -->
+
+      <!-- item groups  -->
+
+      <mat-tree [dataSource]="data" [treeControl]="tc">
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+
+                <div>
+                  <span><a [routerLink]="['/item',node.link]">{{node.name}}</a></span>
+                  <a [routerLink]="['/item',node.link,'add']">add</a>
+
+                </div>
+
+            </mat-tree-node>
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                <li>
+                  <div class="mat-tree-node">
+                    <button mat-icon-button matTreeNodeToggle>
+                      <mat-icon>
+                        {{tc.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                      </mat-icon>
+
+                    {{node.name}}
+                  </button>
+                  </div>
+                  <ul [hidden]="!tc.isExpanded(node)">
+                    <ng-container matTreeNodeOutlet></ng-container>
+                  </ul>
+                </li>
+              </mat-nested-tree-node>
+       </mat-tree>
+
+    <!-- </mat-list-item> -->
+
+    <!-- add in Item dropdown menu bar Item groups,Items,composite items, inventory adjustments -->
+    <mat-list-item routerLink='/salesOrder'> Sales Orders </mat-list-item>
+    <mat-icon routerLink='/salesOrder/add'>add</mat-icon>
+    <mat-list-item routerLink="/packages"> Packages</mat-list-item>
+    <mat-list-item routerLink="/invoices"> Invoices</mat-list-item>
+    <mat-list-item routerLink="/deliveryChallans"> Delivery Challans </mat-list-item>
+    <mat-list-item routerLink="/purchaseOrders"> Purchase Orders </mat-list-item>
+    <a routerLink='/purchaseOrders/add' routerLinkActive="active">Add </a>
+    <mat-list-item routerLink='/bills'> Bills </mat-list-item>
+    <mat-list-item routerLink="/integrations"> Integrations </mat-list-item>
+    <mat-list-item routerLink="/reports"> Reports </mat-list-item>
+</mat-list>

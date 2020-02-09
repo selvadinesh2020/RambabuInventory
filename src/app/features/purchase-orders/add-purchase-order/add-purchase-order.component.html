@@ -1,0 +1,57 @@
+<div >
+    <h3>New Purchase Order</h3>
+<form [formGroup]="addPurchaseOrderForm" (ngSubmit)="purchaseOrderSubmit()">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Select Vendor" aria-label="Number" matInput formControlName="Vendorddl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let vendor of vendorList | async" [value]="vendor">
+        {{vendor}}
+      </mat-option>
+    </mat-autocomplete>
+    <div>
+        <label>Deliver To* </label>
+        <mat-radio-group formControlName="DeliveryTo">
+          <mat-radio-button value="Organization">Organization</mat-radio-button>
+          <mat-radio-button value="Customer">Customer</mat-radio-button>
+        </mat-radio-group>
+      </div>
+</mat-form-field>
+<mat-divider [inset]="true"></mat-divider>
+<div>
+  <label>PurchaseOrder#*</label>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="PurchaseOrder" formControlName="PurchaseOrder" [(ngModel)]="purchaseOrderModel.PurchaseOrder">
+        <mat-error>{{getErrorMessage('PurchaseOrder')}}</mat-error>
+
+      </mat-form-field>
+</div>
+<div>
+    <label>Reference#</label>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Reference" formControlName="Reference" [(ngModel)]="purchaseOrderModel.Reference">
+          <mat-error>{{getErrorMessage('Reference')}}</mat-error>
+  
+        </mat-form-field>
+  </div>
+  <div>
+      <label>Date</label>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="FromTransactionDate" formControlName="FromTransactionDate" [(ngModel)]="purchaseOrderModel.FromTransactionDate">
+            <mat-error>{{getErrorMessage('FromTransactionDate')}}</mat-error>
+         
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+          <input matInput placeholder="ToTransactionDate" formControlName="ToTransactionDate" [(ngModel)]="purchaseOrderModel.ToTransactionDate">
+          <mat-error>{{getErrorMessage('ToTransactionDate')}}</mat-error>
+        </mat-form-field>
+    </div>
+    <mat-divider [inset]="true"></mat-divider>
+    <div>
+        <label>Shipment Preference</label>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ShipmentPreference" formControlName="ShipmentPreference" [(ngModel)]="purchaseOrderModel.ShipmentPreference">
+            <mat-error>{{getErrorMessage('ShipmentPreference')}}</mat-error>
+          </mat-form-field>
+    </div>
+</form>
+</div>

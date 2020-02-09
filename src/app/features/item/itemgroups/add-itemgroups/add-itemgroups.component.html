@@ -1,0 +1,32 @@
+<p>
+  add-itemgroups works!
+</p>
+<form [formGroup]="contactForm" (ngSubmit)="contactSubmit()">
+  <table class="example-full-width" cellspacing="0" formGroupName="primaryContact">
+    <tr>
+      <td>Primary Contact:</td>
+    <td>
+        <mat-form-field>
+            <mat-select placeholder="Salutation" formControlName="salutionName" >
+              <mat-option *ngFor="let salution of salutations" [value]="salution.value" >
+                {{salution.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error>{{getErrorMessage('salutation')}}</mat-error>
+          </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="First name" formControlName="firstName">
+        <mat-error>{{getErrorMessage('FirstName')}}</mat-error>
+
+      </mat-form-field>
+    </td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="Last Name" formControlName="lastName">
+      <mat-error>{{getErrorMessage('LastName')}}</mat-error>
+
+    </mat-form-field></td>
+  </tr>
+</table>
+</form>
